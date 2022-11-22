@@ -14,11 +14,24 @@ export default OnBoarding = () => {
 
   const viewConfig = useRef({viewAreaCoveragePercentThreshold: 50}).current;
 
+  const scrollTo = () => {
+    if(currentIndex < slides.length - 1) {
+      slidesRef.current.scrollToIndex({ index: currentIndex + 1 })
+    }
+  }
+
+  let count = 0;
+
+  slides.forEach(e => {
+    count++;
+  });
+
   return (
     <View style={styles.container}>
+
       <FlatList
         data={slides}
-        renderItem={({item}) => <OnBoardingItem item={item} />}
+        renderItem={({item, index}) => <OnBoardingItem item={item} index={index} count={count} scrollTo={scrollTo} />}
         horizontal
         showsHorizontalScrollIndicator
         pagingEnabled
@@ -46,4 +59,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
 });
