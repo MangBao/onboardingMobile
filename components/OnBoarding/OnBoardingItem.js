@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import NextPress from './NextPress';
 
-export default OnBoardingItem = ({item, index, count, scrollTo}) => {
+export default OnBoardingItem = ({item, index, count, nextPress, slides}) => {
   const {width} = useWindowDimensions();
   const [txtButton, setTxtButton] = useState('Next');
   
@@ -17,10 +17,6 @@ export default OnBoardingItem = ({item, index, count, scrollTo}) => {
       setTxtButton('Get Started');
     }
   }, [item])
-
-  const nextPress = () => {
-
-  }
 
   return (
     <View style={[styles.container, {width}]} id={index+1}>
@@ -39,7 +35,7 @@ export default OnBoardingItem = ({item, index, count, scrollTo}) => {
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.desc}>{item.desc}</Text>
         <View style={{paddingRight: 110, paddingLeft: 110, marginTop: 40}}>
-          <NextPress txtButton={txtButton} scrollTo={scrollTo}/>
+          <NextPress txtButton={txtButton} nextPress={nextPress} index={index} slides={slides}/>
         </View>
       </View>
     </View>
@@ -50,7 +46,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    // alignItems: 'center',
   },
   image: {
     flex: 0.5,
@@ -70,13 +65,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 64,
   },
   count: {
-    // display: 'flex',
     flex: 0.1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingLeft: 30,
     paddingRight: 30,
+    marginTop: 20,
   },
   textCount: {
     fontWeight: '400',

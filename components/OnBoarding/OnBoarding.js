@@ -14,7 +14,7 @@ export default OnBoarding = () => {
 
   const viewConfig = useRef({viewAreaCoveragePercentThreshold: 50}).current;
 
-  const scrollTo = () => {
+  const nextPress = () => {
     if(currentIndex < slides.length - 1) {
       slidesRef.current.scrollToIndex({ index: currentIndex + 1 })
     }
@@ -31,7 +31,7 @@ export default OnBoarding = () => {
 
       <FlatList
         data={slides}
-        renderItem={({item, index}) => <OnBoardingItem item={item} index={index} count={count} scrollTo={scrollTo} />}
+        renderItem={({item, index}) => <OnBoardingItem item={item} index={index} count={count} nextPress={nextPress} slides={slides} />}
         horizontal
         showsHorizontalScrollIndicator
         pagingEnabled

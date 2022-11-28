@@ -1,14 +1,16 @@
 import React from 'react';
-import OnBoarding from './components/OnBoarding';
+// import OnBoarding from './components/OnBoarding';
 import {StatusBar} from 'expo-status-bar';
 import {StyleSheet, View} from 'react-native';
+import Login from './pages/Login';
 
 export default App = () => {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
 
-      <OnBoarding />
+      {/* <OnBoarding /> */}
+      <Login />
     </View>
   );
 };
