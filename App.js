@@ -1,17 +1,37 @@
 import React from 'react';
-// import OnBoarding from './components/OnBoarding';
-import {StatusBar} from 'expo-status-bar';
-import {StyleSheet, View} from 'react-native';
+import OnBoarding from './components/OnBoarding';
+import {StyleSheet} from 'react-native';
 import Login from './pages/Login';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {Provider as PaperProvider} from 'react-native-paper';
+import SignUp from './pages/SignUp';
+
+const Stack = createNativeStackNavigator();
 
 export default App = () => {
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-
-      {/* <OnBoarding /> */}
-      <Login />
-    </View>
+    <PaperProvider>
+      <NavigationContainer>
+        <Stack.Navigator style={styles.container}>
+          <Stack.Screen
+            name="Onboarding"
+            component={OnBoarding}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Login"
+            component={Login}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="SignUp"
+            component={SignUp}
+            options={{headerShown: false}}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </PaperProvider>
   );
 };
 

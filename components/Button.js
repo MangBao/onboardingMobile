@@ -1,10 +1,11 @@
 import {TouchableOpacity, StyleSheet, Dimensions, View, Text} from 'react-native';
 
-export default Button = () => {
+export default Button = ({...prop}) => {
+
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.button}>
-        <Text style={styles.text}>Login</Text>
+        <Text style={styles.text}>{prop.textTitle}</Text>
       </TouchableOpacity>
     </View>
   );

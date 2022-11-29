@@ -2,7 +2,7 @@ import {TouchableOpacity, StyleSheet, Text} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 
-export default NextPress = ({nextPress, txtButton, index, count}) => {
+export default NextPress = ({nextPress, txtButton, index}) => {
 
   return (
     <TouchableOpacity style={styles.button} onPress={nextPress}>

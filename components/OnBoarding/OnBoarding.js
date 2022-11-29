@@ -1,9 +1,10 @@
 import React, {useState, useRef} from 'react';
 import {View, FlatList, StyleSheet, Text, Animated} from 'react-native';
+import Login from '../../pages/Login';
 import slides from '../../slides';
 import OnBoardingItem from './OnBoardingItem';
 
-export default OnBoarding = () => {
+export default OnBoarding = ({navigation}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
   const slidesRef = useRef(null);
@@ -15,10 +16,12 @@ export default OnBoarding = () => {
   const viewConfig = useRef({viewAreaCoveragePercentThreshold: 50}).current;
 
   const nextPress = () => {
-    if(currentIndex < slides.length - 1) {
-      slidesRef.current.scrollToIndex({ index: currentIndex + 1 })
+    if (currentIndex < slides.length - 1) {
+      slidesRef.current.scrollToIndex({index: currentIndex + 1});
+    } else {
+      navigation.navigate(Login)
     }
-  }
+  };
 
   let count = 0;
 
@@ -28,10 +31,17 @@ export default OnBoarding = () => {
 
   return (
     <View style={styles.container}>
-
       <FlatList
         data={slides}
-        renderItem={({item, index}) => <OnBoardingItem item={item} index={index} count={count} nextPress={nextPress} slides={slides} />}
+        renderItem={({item, index}) => (
+          <OnBoardingItem
+            item={item}
+            index={index}
+            count={count}
+            nextPress={nextPress}
+            slides={slides}
+          />
+        )}
         horizontal
         showsHorizontalScrollIndicator
         pagingEnabled
@@ -59,5 +69,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
 });
