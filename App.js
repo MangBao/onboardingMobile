@@ -6,6 +6,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
 import {Provider as PaperProvider} from 'react-native-paper';
 import SignUp from './pages/SignUp';
+import Home from './pages/Home';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,7 +15,7 @@ export default App = () => {
     <PaperProvider>
       <NavigationContainer>
         <Stack.Navigator style={styles.container}>
-          <Stack.Screen
+          {/* <Stack.Screen
             name="Onboarding"
             component={OnBoarding}
             options={{headerShown: false}}
@@ -27,6 +28,11 @@ export default App = () => {
           <Stack.Screen
             name="SignUp"
             component={SignUp}
+            options={{headerShown: false}}
+          /> */}
+          <Stack.Screen
+            name="Home"
+            component={Home}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
