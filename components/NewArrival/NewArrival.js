@@ -14,7 +14,7 @@ export default NewArrival = () => {
         <View style={styles.groupTabs}>
           {productItem.map((item, index) => (
             <ProductItem
-              keys={index}
+              keyProduct={index}
               image={item.image}
               price={item.price}
               name={item.name_product}
@@ -22,7 +22,6 @@ export default NewArrival = () => {
           ))}
         </View>
       </ScrollView>
-      <Text>Hotisjem</Text>
     </View>
   );
 };

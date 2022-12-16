@@ -18,7 +18,7 @@ export default Login = ({navigation}) => {
         <InputLogin textTitle={textTitle} />
         <ForgotPassword />
         <View style={{height: 18}}></View>
-        <Button textTitle={textTitle} />
+        <Button textTitle={textTitle} navigation={navigation} />
         <View style={{height: 26}}></View>
         <Image source={imageOr} style={styles.imageOr} />
         <View style={{height: 26}}></View>

@@ -1,10 +1,11 @@
 import {TouchableOpacity, StyleSheet, Dimensions, View, Text} from 'react-native';
+import HomePage from '../pages/Home';
 
 export default Button = ({...prop}) => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={() => prop.navigation.navigate(HomePage)}>
         <Text style={styles.text}>{prop.textTitle}</Text>
       </TouchableOpacity>
     </View>
