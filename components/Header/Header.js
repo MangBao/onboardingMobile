@@ -1,10 +1,12 @@
-import {Dimensions, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View, Animated} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-export default Header = () => {
+export default Header = ({...prop}) => {
   return (
     <View style={styles.container}>
-      <FontAwesome5 name="bars" solid style={styles.fontIcon} />
+      <TouchableOpacity>
+        <FontAwesome5 name="bars" solid style={styles.fontIcon} />
+      </TouchableOpacity>
       <Text style={styles.fontText}>
         <FontAwesome5 name="map-marker-alt" regular />
         <Text>15/2 New Texas</Text>
@@ -52,10 +54,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 1,
     left: 10,
-    borderColor:'white',
+    borderColor: 'white',
     borderWidth: 1,
   },
   groupIcon: {
     position: 'relative',
-  }
+  },
 });

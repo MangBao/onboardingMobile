@@ -1,5 +1,4 @@
-import {ScrollView, Dimensions, StyleSheet, View} from 'react-native';
-import Drawer from '../components/Drawer';
+import {ScrollView, Dimensions, StyleSheet, View, Animated} from 'react-native';
 import Header from '../components/Header/Header';
 import InputSearch from '../components/InputSearch/InputSearch';
 import NewArrival from '../components/NewArrival/NewArrival';
@@ -7,13 +6,13 @@ import Title from '../components/Title/Title';
 import TypeClother from '../components/TypeClother/TypeClother';
 import typeProduct from '../typeProduct';
 
-export default Home = ({navigation}) => {
+export default Home = ({...prop}) => {
   const title = 'Explore';
   const subtitle = 'best Outfits for you';
 
   return (
-    <ScrollView contentContainerStyle={styles.contentContainer}>
-      {/* <Header />
+    <Animated.ScrollView contentContainerStyle={styles.contentContainer}>
+      <Header />
       <View style={{height: 20}} />
       <Title title={title} subtitle={subtitle} />
       <View style={{height: 18}} />
@@ -36,9 +35,8 @@ export default Home = ({navigation}) => {
 
       <NewArrival />
 
-      <View style={{height: 18}} /> */}
-      <Drawer />
-    </ScrollView>
+      <View style={{height: 18}} />
+    </Animated.ScrollView>
   );
 };
 

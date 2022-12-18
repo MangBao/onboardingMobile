@@ -11,7 +11,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const Tab = createMaterialBottomTabNavigator();
 
-export default TabNavigation = () => {
+export default TabNavigation = (...prop) => {
   return (
     <Tab.Navigator
       initialRouteName="Feed"
@@ -22,7 +22,7 @@ export default TabNavigation = () => {
       })}>
       <Tab.Screen
         name="Home"
-        component={Home}
+        children={() => <Home />}
         options={{
           tabBarIcon: ({color}) => (
             <MaterialCommunityIcons
