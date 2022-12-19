@@ -25,7 +25,13 @@ export default DrawerNavigation = () => {
   // Scale Intially must be One...
   const scaleValue = useRef(new Animated.Value(1)).current;
   const closeButtonOffset = useRef(new Animated.Value(0)).current;
-
+  const obj = {
+    id: 1,
+    name: 'Bao'
+  }
+  console.log(obj);
+  // console.log(scaleValue);
+  // console.log(closeButtonOffset);
   return (
     <View>
       <View style={styles.container}>
@@ -59,15 +65,17 @@ export default DrawerNavigation = () => {
             paddingHorizontal: 15,
             paddingVertical: 20,
             borderRadius: showMenu ? 15 : 0,
-            transform: [{scale: scaleValue}, {translateX: offsetValue}],
+            // transform: [{scale: scaleValue}, {translateX: offsetValue}],
+            
           },
         ]}>
         <TabNavigation
-          offsetValue={offsetValue}
-          scaleValue={scaleValue}
-          closeButtonOffset={closeButtonOffset}
-          showMenu={showMenu}
-          setShowMenu={setShowMenu}
+          // offsetValue={offsetValue}
+          // scaleValue={scaleValue}
+          // closeButtonOffset={closeButtonOffset}
+          // showMenu={showMenu}
+          // setShowMenu={setShowMenu}
+          // a={'OK'}
         />
       </View>
     </View>

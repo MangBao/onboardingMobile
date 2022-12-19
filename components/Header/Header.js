@@ -2,6 +2,7 @@ import {StyleSheet, Text, TouchableOpacity, View, Animated} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 export default Header = ({...prop}) => {
+  // console.log(prop.a);
   return (
     <View style={styles.container}>
       <TouchableOpacity>
