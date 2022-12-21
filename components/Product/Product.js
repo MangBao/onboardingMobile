@@ -2,7 +2,7 @@ import {View, Image, StyleSheet, Text} from 'react-native';
 
 export default Product = ({...prop}) => {
   return (
-    <View style={styles.tab} keyProduct={prop.keys}>
+    <View style={styles.tab} key={prop.keyProduct}>
       <View style>
         <Image source={prop.image} />
       </View>

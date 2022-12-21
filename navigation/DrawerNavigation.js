@@ -14,6 +14,7 @@ import TabNavigation from './TabNavigation';
 
 export default DrawerNavigation = () => {
   const imageAvatar = require('../assets/images/avatar.jpeg');
+  const imageLogo = require('../assets/images/logomobile.png');
 
   const [currentTab, setCurrentTab] = useState('Home');
 
@@ -25,22 +26,26 @@ export default DrawerNavigation = () => {
   // Scale Intially must be One...
   const scaleValue = useRef(new Animated.Value(1)).current;
   const closeButtonOffset = useRef(new Animated.Value(0)).current;
-  const obj = {
-    id: 1,
-    name: 'Bao'
-  }
-  console.log(obj);
-  // console.log(scaleValue);
-  // console.log(closeButtonOffset);
+
   return (
     <View>
-      <View style={styles.container}>
+      <View
+        style={[
+          styles.container,
+          {
+            height: showMenu
+              ? Dimensions.get('window').height - 25
+              : Dimensions.get('window').height,
+          },
+        ]}>
         <View style={styles.groupProfile}>
           <Image source={imageAvatar} style={styles.avatar} />
-          <Text style={styles.name}>Mang Bao</Text>
-          <TouchableOpacity>
-            <Text>View profile</Text>
-          </TouchableOpacity>
+          <View style={styles.groupName}>
+            <Text style={styles.name}>Mang Bao</Text>
+            <TouchableOpacity>
+              <Text>View profile</Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
         <View style={{height: 20}} />
@@ -50,34 +55,40 @@ export default DrawerNavigation = () => {
             //
           }
           {TabButton(currentTab, setCurrentTab, 'My favorites', 'heart')}
-          {TabButton(currentTab, setCurrentTab, 'Wallets', 'heart')}
-          {TabButton(currentTab, setCurrentTab, 'My orders', 'heart')}
-          {TabButton(currentTab, setCurrentTab, 'Privacy policy', 'heart')}
-          {TabButton(currentTab, setCurrentTab, 'Settings', 'heart')}
+          {TabButton(currentTab, setCurrentTab, 'Wallets', 'wallet')}
+          {TabButton(currentTab, setCurrentTab, 'My orders', 'shopping-basket')}
+          {TabButton(currentTab, setCurrentTab, 'About us', 'clipboard-list')}
+          {TabButton(currentTab, setCurrentTab, 'Privacy policy', 'lock')}
+          {TabButton(currentTab, setCurrentTab, 'Settings', 'gear')}
         </View>
-        <View>{TabButton(currentTab, setCurrentTab, 'LogOut', 'heart')}</View>
+        <View>
+          {TabButton(currentTab, setCurrentTab, 'LogOut', 'sign-out', '')}
+        </View>
+        <View>
+          <Image source={imageLogo} />
+        </View>
       </View>
 
-      <View
+      <Animated.View
         style={[
           styles.overlay,
+          styles.elevation,
           {
-            paddingHorizontal: 15,
-            paddingVertical: 20,
-            borderRadius: showMenu ? 15 : 0,
-            // transform: [{scale: scaleValue}, {translateX: offsetValue}],
-            
+            paddingBottom: 20,
+            paddingVertical: showMenu ? 20 : 0,
+            borderRadius: showMenu ? 20 : 0,
+            transform: [{scale: scaleValue}, {translateX: offsetValue}],
+            backgroundColor: 'white',
           },
         ]}>
         <TabNavigation
-          // offsetValue={offsetValue}
-          // scaleValue={scaleValue}
-          // closeButtonOffset={closeButtonOffset}
-          // showMenu={showMenu}
-          // setShowMenu={setShowMenu}
-          // a={'OK'}
+          offsetValue={offsetValue}
+          scaleValue={scaleValue}
+          closeButtonOffset={closeButtonOffset}
+          showMenu={showMenu}
+          setShowMenu={setShowMenu}
         />
-      </View>
+      </Animated.View>
     </View>
   );
 };
@@ -87,24 +98,22 @@ const styles = StyleSheet.create({
     backgroundColor: '#fbfbfd',
     justifyContent: 'flex-start',
     padding: 20,
-    // width: Dimensions.get('window').width - 100,
-    height: Dimensions.get('window').height,
   },
   avatar: {
     width: 60,
     height: 60,
     borderRadius: 30,
     padding: 20,
+    marginRight: 16,
   },
   name: {
     fontSize: 20,
     fontWeight: 'bold',
     color: 'black',
-    marginTop: 20,
   },
   listTab: {
     flexGrow: 1,
-    marginTop: 50,
+    marginTop: 20,
   },
   overlay: {
     flexGrow: 1,
@@ -115,4 +124,12 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
   },
+  elevation: {
+    elevation: 20,
+    shadowColor: '#171717',
+  },
+  groupProfile: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  }
 });

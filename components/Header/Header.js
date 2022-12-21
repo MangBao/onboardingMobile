@@ -2,11 +2,49 @@ import {StyleSheet, Text, TouchableOpacity, View, Animated} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 export default Header = ({...prop}) => {
-  // console.log(prop.a);
   return (
-    <View style={styles.container}>
-      <TouchableOpacity>
-        <FontAwesome5 name="bars" solid style={styles.fontIcon} />
+    <Animated.View
+      style={[
+        styles.container,
+        {
+          transform: [
+            {
+              translateY: prop.closeButtonOffset,
+            },
+          ],
+        },
+      ]}>
+      <TouchableOpacity
+        onPress={() => {
+          // Do Actions Here....
+          // Scaling the view...
+          Animated.timing(prop.scaleValue, {
+            toValue: prop.showMenu ? 1 : 0.88,
+            duration: 500,
+            useNativeDriver: true,
+          }).start();
+
+          Animated.timing(prop.offsetValue, {
+            // YOur Random Value...
+            toValue: prop.showMenu ? 0 : 230,
+            duration: 500,
+            useNativeDriver: true,
+          }).start();
+
+          Animated.timing(prop.closeButtonOffset, {
+            // YOur Random Value...
+            toValue: !prop.showMenu ? -30 : 0,
+            duration: 500,
+            useNativeDriver: true,
+          }).start();
+
+          prop.setShowMenu(!prop.showMenu);
+        }}>
+        <FontAwesome5
+          name={prop.showMenu ? 'chevron-left' : 'bars'}
+          solid
+          style={styles.fontIcon}
+        />
       </TouchableOpacity>
       <Text style={styles.fontText}>
         <FontAwesome5 name="map-marker-alt" regular />
@@ -20,7 +58,7 @@ export default Header = ({...prop}) => {
         />
         <View style={styles.styleDot}></View>
       </View>
-    </View>
+    </Animated.View>
   );
 };
 

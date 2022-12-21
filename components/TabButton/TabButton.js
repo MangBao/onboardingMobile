@@ -1,4 +1,5 @@
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default TabButton = (currentTab, setCurrentTab, title, icon) => {
@@ -17,13 +18,18 @@ export default TabButton = (currentTab, setCurrentTab, title, icon) => {
           setCurrentTab(title);
         }
       }}>
-      <FontAwesome name={icon} style={styles.iconStyle} />
+      {(title === 'Settings' || title === 'LogOut') ? (
+        <FontAwesome name={icon} style={styles.iconStyle} />
+      ) : (
+        <FontAwesome5 name={icon} style={styles.iconStyle} />
+      )}
       <View style={{width: 10}} />
       <Text
         style={[
           styles.text,
           {
             color: currentTab === title ? '#fffff' : 'black',
+            fontWeight: currentTab === title ? 'bold' : '400',
           },
         ]}>
         {title}
@@ -42,10 +48,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   iconStyle: {
-    fontSize: 25,
+    fontSize: 18,
   },
   text: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: 14,
   },
 });

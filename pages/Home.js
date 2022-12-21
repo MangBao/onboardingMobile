@@ -1,18 +1,30 @@
 import {ScrollView, Dimensions, StyleSheet, View, Animated} from 'react-native';
 import Header from '../components/Header/Header';
 import InputSearch from '../components/InputSearch/InputSearch';
+import Modals from '../components/Modals/Modals';
 import NewArrival from '../components/NewArrival/NewArrival';
 import Title from '../components/Title/Title';
 import TypeClother from '../components/TypeClother/TypeClother';
 import typeProduct from '../typeProduct';
+import {useSelector} from 'react-redux';
+import {modalSelector} from '../redux/selectors';
 
 export default Home = ({...prop}) => {
+  // const { showModalFilter } = useSelector(modalSelector);
+  // console.log(showModalFilter);
+
   const title = 'Explore';
   const subtitle = 'best Outfits for you';
 
   return (
-    <Animated.ScrollView contentContainerStyle={styles.contentContainer}>
-      <Header />
+    <ScrollView contentContainerStyle={styles.contentContainer}>
+      <Header
+        offsetValue={prop.offsetValue}
+        scaleValue={prop.scaleValue}
+        closeButtonOffset={prop.closeButtonOffset}
+        showMenu={prop.showMenu}
+        setShowMenu={prop.setShowMenu}
+      />
       <View style={{height: 20}} />
       <Title title={title} subtitle={subtitle} />
       <View style={{height: 18}} />
@@ -34,9 +46,8 @@ export default Home = ({...prop}) => {
       <View style={{height: 18}} />
 
       <NewArrival />
-
       <View style={{height: 18}} />
-    </Animated.ScrollView>
+    </ScrollView>
   );
 };
 
@@ -47,7 +58,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   contentContainer: {
-    backgroundColor: '#fbfbfd',
+    // backgroundColor: 'gray',
+    backgroundColor: 'white',
   },
   groupTabs: {
     display: 'flex',

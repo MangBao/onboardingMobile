@@ -1,14 +1,30 @@
-import {Dimensions, Image, StyleSheet, TextInput, View} from 'react-native';
+import {useEffect, useState} from 'react';
+import {
+  Dimensions,
+  Image,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import {useDispatch} from 'react-redux';
+import modalSlice from '../../redux/modalSlice';
 
 export default InputSearch = () => {
+  const dispatch = useDispatch();
   const imageIcon = require('../../assets/images/buttonInSearch.png');
 
   return (
     <View style={[styles.groupInput, {marginBottom: 6}]}>
       <FontAwesome5 name="search" light style={styles.textIcon} />
       <TextInput style={styles.inputText} placeholder="Search item" />
-      <Image source={imageIcon} style={styles.image} />
+      <TouchableOpacity
+        onPress={() => {
+          dispatch(modalSlice.actions.setShowModalFilter(true));
+        }}>
+        <Image source={imageIcon} style={styles.image} />
+      </TouchableOpacity>
     </View>
   );
 };
@@ -36,5 +52,5 @@ const styles = StyleSheet.create({
   },
   textIcon: {
     // paddingLeft: 0
-  }
+  },
 });
