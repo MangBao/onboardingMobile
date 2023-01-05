@@ -5,18 +5,13 @@ import {
   View,
   Text,
 } from 'react-native';
-// import Home from '../pages/Home';
-import DrawerNavigation from '../navigation/DrawerNavigation';
-import OnBoarding from './OnBoarding/OnBoarding';
-import Login from '../pages/Login';
-import SignUp from '../pages/SignUp';
 
 export default Button = ({...prop}) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => prop.navigation.navigate(OnBoarding)}>
+        onPress={() => prop.navigation.navigate('DrawerNavigation')}>
         <Text style={styles.text}>{prop.textTitle}</Text>
       </TouchableOpacity>
     </View>

@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import {
   Dimensions,
   Image,
@@ -9,16 +9,32 @@ import {
 } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {useDispatch} from 'react-redux';
+import SearchPage from '../../pages/SearchPage';
 import modalSlice from '../../redux/modalSlice';
 
-export default InputSearch = () => {
+export default InputSearch = ({navigation}) => {
   const dispatch = useDispatch();
   const imageIcon = require('../../assets/images/buttonInSearch.png');
+  const [text, setText] = useState('');
 
   return (
     <View style={[styles.groupInput, {marginBottom: 6}]}>
-      <FontAwesome5 name="search" light style={styles.textIcon} />
-      <TextInput style={styles.inputText} placeholder="Search item" />
+      <FontAwesome5
+        name="search"
+        light
+        style={styles.textIcon}
+        onPress={() => {
+          <SearchPage textParams={text} />;
+          console.log('OK');
+          navigation.navigate('SearchPage');
+        }}
+      />
+      <TextInput
+        style={styles.inputText}
+        placeholder="Search item"
+        onChangeText={newText => setText(newText)}
+        defaultValue={text}
+      />
       <TouchableOpacity
         onPress={() => {
           dispatch(modalSlice.actions.setShowModalFilter(true));

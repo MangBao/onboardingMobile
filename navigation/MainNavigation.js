@@ -7,6 +7,7 @@ import TabNavigation from './TabNavigation';
 import DrawerNavigation from './DrawerNavigation';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {StyleSheet} from 'react-native';
+import SearchPage from '../pages/SearchPage';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,11 +20,7 @@ export default MainNavigation = () => {
           component={OnBoarding}
           options={{headerShown: false}}
         />
-        <Stack.Screen
-          name="DrawerNavigation"
-          component={DrawerNavigation}
-          options={{headerShown: false}}
-        />
+
         <Stack.Screen
           name="Login"
           component={Login}
@@ -37,6 +34,16 @@ export default MainNavigation = () => {
         <Stack.Screen
           name="Home"
           component={TabNavigation}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="DrawerNavigation"
+          component={DrawerNavigation}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="SearchPage"
+          component={SearchPage}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

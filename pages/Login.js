@@ -1,4 +1,11 @@
-import {View, StyleSheet, Image, Text, ScrollView, Dimensions} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Image,
+  Text,
+  ScrollView,
+  Dimensions,
+} from 'react-native';
 import Button from '../components/Button';
 import ForgotPassword from '../components/ForgotPassword';
 import InputLogin from '../components/InputLogin';
@@ -9,6 +16,8 @@ import SignUp from '../pages/SignUp';
 export default Login = ({navigation}) => {
   const imageOr = require('../assets/images/or.png');
   const textTitle = 'Login';
+
+  // const jumToHome = DrawerActions.jumpTo('', {})
 
   return (
     <ScrollView contentContainerStyle={styles.contentContainer}>

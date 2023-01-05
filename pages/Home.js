@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
   contentContainer: {
     // backgroundColor: 'gray',
     backgroundColor: 'white',
+    paddingBottom: 50,
   },
   groupTabs: {
     display: 'flex',
