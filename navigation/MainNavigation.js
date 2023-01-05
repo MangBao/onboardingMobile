@@ -15,13 +15,13 @@ export default MainNavigation = () => {
     <NavigationContainer>
       <Stack.Navigator style={styles.container}>
         <Stack.Screen
-          name="DrawerNavigation"
-          component={DrawerNavigation}
+          name="Onboarding"
+          component={OnBoarding}
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="Onboarding"
-          component={OnBoarding}
+          name="DrawerNavigation"
+          component={DrawerNavigation}
           options={{headerShown: false}}
         />
         <Stack.Screen

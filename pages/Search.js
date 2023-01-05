@@ -1,4 +1,4 @@
-import {ScrollView, Dimensions, StyleSheet, View, Animated} from 'react-native';
+import {ScrollView, Dimensions, StyleSheet, View} from 'react-native';
 import Header from '../components/Header/Header';
 import InputSearch from '../components/InputSearch/InputSearch';
 import NewArrival from '../components/NewArrival/NewArrival';
@@ -6,7 +6,7 @@ import Title from '../components/Title/Title';
 import TypeClother from '../components/TypeClother/TypeClother';
 import typeProduct from '../typeProduct';
 
-export default Home = ({...prop}) => {
+export default Search = ({...prop}) => {
   const title = 'Explore';
   const subtitle = 'best Outfits for you';
 

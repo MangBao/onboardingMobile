@@ -51,9 +51,6 @@ export default DrawerNavigation = () => {
         <View style={{height: 20}} />
 
         <View style={styles.listTab}>
-          {
-            //
-          }
           {TabButton(currentTab, setCurrentTab, 'My favorites', 'heart')}
           {TabButton(currentTab, setCurrentTab, 'Wallets', 'wallet')}
           {TabButton(currentTab, setCurrentTab, 'My orders', 'shopping-basket')}
@@ -131,5 +128,5 @@ const styles = StyleSheet.create({
   groupProfile: {
     flexDirection: 'row',
     alignItems: 'center',
-  }
+  },
 });
