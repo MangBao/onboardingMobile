@@ -1,14 +1,30 @@
+import {useEffect} from 'react';
 import {ScrollView, Dimensions, StyleSheet, View, Animated} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import {fetchAllProducts} from '../api/services';
 import Header from '../components/Header/Header';
 import InputSearch from '../components/InputSearch/InputSearch';
 import NewArrival from '../components/NewArrival/NewArrival';
 import Title from '../components/Title/Title';
 import TypeClother from '../components/TypeClother/TypeClother';
+import {productSelector} from '../redux/selectors';
 import typeProduct from '../typeProduct';
+import productSlice from '../redux/productSlice';
 
 export default Home = ({...prop}) => {
   const title = 'Explore';
   const subtitle = 'best Outfits for you';
+
+  const dispatch = useDispatch();
+  const {productList} = useSelector(productSelector);
+
+  useEffect(() => {
+    fetchAllProducts().then(res => {
+      dispatch(productSlice.actions.setProductList(res));
+    });
+  });
+
+  console.log(productList);
 
   return (
     <ScrollView contentContainerStyle={styles.contentContainer}>

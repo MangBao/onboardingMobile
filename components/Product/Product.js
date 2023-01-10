@@ -1,4 +1,5 @@
 import {StyleSheet, View, Image, Text} from 'react-native';
+import Heart from '../Heart/Heart';
 
 export default Product = ({...prop}) => {
   return (
@@ -9,6 +10,9 @@ export default Product = ({...prop}) => {
       <View style={styles.groupText}>
         <Text style={styles.price}>{prop.price} $</Text>
         <Text>{prop.name}</Text>
+      </View>
+      <View style={styles.heart}>
+        <Heart />
       </View>
     </View>
   );
@@ -24,7 +28,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#efeef3',
-    mar,
+    marginBottom: 20,
   },
   groupText: {
     display: 'flex',
@@ -34,5 +38,10 @@ const styles = StyleSheet.create({
   price: {
     fontWeight: 'bold',
     color: 'black',
+  },
+  heart: {
+    position: 'absolute',
+    top: '4%',
+    left: '75%',
   },
 });

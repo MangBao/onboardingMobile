@@ -1,0 +1,32 @@
+{
+    "products": [
+        {
+            "id": "1",
+            "name_product": "Long Sleeve Shirts",
+            "price": "165",
+            "image": "./assets/images/ao1.png",
+            "favorite": "0"
+        },
+        {
+            "id": "2",
+            "name_product": "Casual Henley Shirts",
+            "price": "175",
+            "image": "./assets/images/ao2.png",
+            "favorite": "1"
+        },
+        {
+            "id": "3",
+            "name_product": "Curved Hem Shirts",
+            "price": "100",
+            "image": "./assets/images/ao3.png",
+            "favorite": "0"
+        },
+        {
+            "id": "4",
+            "name_product": "Casual Nolin",
+            "price": "100",
+            "image": "./assets/images/ao4.png",
+            "favorite": "1"
+        }
+    ]
+}

@@ -30,7 +30,7 @@ export default MainNavigation = () => {
           component={SignUp}
           options={{headerShown: false}}
         />
-        {/* <Stack.Screen
+        <Stack.Screen
           name="Home"
           component={TabNavigation}
           options={{headerShown: false}}
@@ -45,7 +45,7 @@ export default MainNavigation = () => {
           name="SearchPage"
           component={SearchPage}
           options={{headerShown: false}}
-        /> */}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
