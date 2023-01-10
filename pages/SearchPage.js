@@ -1,10 +1,15 @@
-import {ScrollView, Dimensions, StyleSheet, View} from 'react-native';
+import {ScrollView, Dimensions, StyleSheet, View, Text} from 'react-native';
 import Header from '../components/Header/Header';
 import InputSearch from '../components/InputSearch/InputSearch';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import productItem from '../productItem';
+
 import NewArrival from '../components/NewArrival/NewArrival';
 import Title from '../components/Title/Title';
 import TypeClother from '../components/TypeClother/TypeClother';
 import typeProduct from '../typeProduct';
+import {black} from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
+import Product from '../components/Product';
 
 export default SearchPage = ({...prop}) => {
   const title = 'Explore';
@@ -19,9 +24,40 @@ export default SearchPage = ({...prop}) => {
         showMenu={prop.showMenu}
         setShowMenu={prop.setShowMenu}
       />
+      <View style={{height: 30}} />
       <InputSearch />
       <View style={{height: 18}} />
-      <Text>{prop.textParams}</Text>
+      <View style={styles.groupTitle}>
+        <View style={styles.groupSearches}>
+          <Text style={{fontSize: 18, color: 'black', fontWeight: '500'}}>
+            Recent searches
+          </Text>
+          <FontAwesome5 name={'chevron-right'} solid style={styles.fontIcon} />
+        </View>
+        <View
+          style={{height: 22, borderBottomWidth: 1, borderColor: '#f2f2f4'}}
+        />
+        <Text
+          style={{
+            fontSize: 18,
+            color: 'black',
+            fontWeight: '500',
+            paddingTop: 18,
+          }}>
+          Search results showing for "Shirt"
+        </Text>
+      </View>
+      <View style={{height: 30}} />
+      <View style={[styles.groupTabs]}>
+        {productItem.map((item, index) => (
+          <Product
+            keyProduct={index}
+            image={item.image}
+            price={item.price}
+            name={item.name_product}
+          />
+        ))}
+      </View>
     </ScrollView>
   );
 };
@@ -35,13 +71,28 @@ const styles = StyleSheet.create({
   contentContainer: {
     // backgroundColor: 'gray',
     backgroundColor: 'white',
+    paddingBottom: 20,
   },
   groupTabs: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    width: Dimensions.get('window').width - 20,
+    flexWrap: 'wrap-reverse',
+    justifyContent: 'center',
+    // width: Dimensions.get('window').width - 20,
     paddingLeft: 20,
+  },
+  groupSearches: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  groupTitle: {
+    paddingHorizontal: 24,
+  },
+  fontIcon: {
+    fontSize: 16,
+    color: 'black',
   },
 });

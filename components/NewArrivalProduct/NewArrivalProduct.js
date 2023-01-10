@@ -1,6 +1,6 @@
-import {StyleSheet, View, Image, Text} from 'react-native';
+import {View, Image, StyleSheet, Text} from 'react-native';
 
-export default Product = ({...prop}) => {
+export default NewArrivalProduct = ({...prop}) => {
   return (
     <View style={styles.tab} key={prop.keyProduct}>
       <View style>
@@ -23,8 +23,6 @@ const styles = StyleSheet.create({
     marginRight: 16,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#efeef3',
-    mar,
   },
   groupText: {
     display: 'flex',

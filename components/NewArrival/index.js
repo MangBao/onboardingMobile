@@ -1,1 +1,1 @@
-export {default} from './NewArrival'
+export {default} from './NewArrival';

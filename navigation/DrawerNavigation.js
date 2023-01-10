@@ -10,9 +10,13 @@ import {
 } from 'react-native';
 
 import TabButton from '../components/TabButton/TabButton';
+import SearchPage from '../pages/SearchPage';
 import TabNavigation from './TabNavigation';
 
-export default DrawerNavigation = () => {
+export default DrawerNavigation = ({route, navigation}) => {
+  const {statePage} = route.params;
+  console.log(statePage);
+  const {otherParam} = route.params;
   const imageAvatar = require('../assets/images/avatar.jpeg');
   const imageLogo = require('../assets/images/logomobile.png');
 
@@ -78,13 +82,23 @@ export default DrawerNavigation = () => {
             backgroundColor: 'white',
           },
         ]}>
-        <TabNavigation
-          offsetValue={offsetValue}
-          scaleValue={scaleValue}
-          closeButtonOffset={closeButtonOffset}
-          showMenu={showMenu}
-          setShowMenu={setShowMenu}
-        />
+        {statePage == 'SearchPage' ? (
+          <SearchPage
+            offsetValue={offsetValue}
+            scaleValue={scaleValue}
+            closeButtonOffset={closeButtonOffset}
+            showMenu={showMenu}
+            setShowMenu={setShowMenu}
+          />
+        ) : (
+          <TabNavigation
+            offsetValue={offsetValue}
+            scaleValue={scaleValue}
+            closeButtonOffset={closeButtonOffset}
+            showMenu={showMenu}
+            setShowMenu={setShowMenu}
+          />
+        )}
       </Animated.View>
     </View>
   );

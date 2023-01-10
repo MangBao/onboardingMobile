@@ -20,7 +20,6 @@ export default MainNavigation = () => {
           component={OnBoarding}
           options={{headerShown: false}}
         />
-
         <Stack.Screen
           name="Login"
           component={Login}
@@ -31,7 +30,7 @@ export default MainNavigation = () => {
           component={SignUp}
           options={{headerShown: false}}
         />
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Home"
           component={TabNavigation}
           options={{headerShown: false}}
@@ -39,13 +38,14 @@ export default MainNavigation = () => {
         <Stack.Screen
           name="DrawerNavigation"
           component={DrawerNavigation}
+          initialParams={{statePage: 'Home'}}
           options={{headerShown: false}}
         />
         <Stack.Screen
           name="SearchPage"
           component={SearchPage}
           options={{headerShown: false}}
-        />
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

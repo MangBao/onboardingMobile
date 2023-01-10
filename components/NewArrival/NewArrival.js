@@ -1,5 +1,5 @@
 import {Dimensions, ScrollView, StyleSheet, View, Text} from 'react-native';
-import ProductItem from '../Product/Product';
+import NewArrivalProduct from '../NewArrivalProduct/NewArrivalProduct';
 import productItem from '../../productItem';
 
 export default NewArrival = () => {
@@ -13,7 +13,7 @@ export default NewArrival = () => {
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <View style={styles.groupTabs}>
           {productItem.map((item, index) => (
-            <ProductItem
+            <NewArrivalProduct
               keyProduct={index}
               image={item.image}
               price={item.price}
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     width: Dimensions.get('window').width - 48,
-    marginLeft: 22
+    marginLeft: 22,
   },
   contentContainer: {
     backgroundColor: '#fbfbfd',
@@ -50,9 +50,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 24,
     color: 'black',
-  }, 
+  },
   text: {
     color: 'gray',
     fontSize: 16,
-  }
+  },
 });

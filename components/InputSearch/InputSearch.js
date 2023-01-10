@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import {useState} from 'react';
 import {
   Dimensions,
@@ -12,7 +13,8 @@ import {useDispatch} from 'react-redux';
 import SearchPage from '../../pages/SearchPage';
 import modalSlice from '../../redux/modalSlice';
 
-export default InputSearch = ({navigation}) => {
+export default InputSearch = () => {
+  const navigation = useNavigation();
   const dispatch = useDispatch();
   const imageIcon = require('../../assets/images/buttonInSearch.png');
   const [text, setText] = useState('');
@@ -23,11 +25,11 @@ export default InputSearch = ({navigation}) => {
         name="search"
         light
         style={styles.textIcon}
-        onPress={() => {
-          <SearchPage textParams={text} />;
-          console.log('OK');
-          navigation.navigate('SearchPage');
-        }}
+        onPress={() =>
+          navigation.navigate('DrawerNavigation', {
+            statePage: 'SearchPage',
+          })
+        }
       />
       <TextInput
         style={styles.inputText}
@@ -67,6 +69,6 @@ const styles = StyleSheet.create({
     height: 50,
   },
   textIcon: {
-    // paddingLeft: 0
+    padding: 5,
   },
 });
