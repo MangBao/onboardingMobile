@@ -22,9 +22,7 @@ export default Home = ({...prop}) => {
     fetchAllProducts().then(res => {
       dispatch(productSlice.actions.setProductList(res));
     });
-  });
-
-  console.log(productList);
+  }, []);
 
   return (
     <ScrollView contentContainerStyle={styles.contentContainer}>
@@ -55,7 +53,7 @@ export default Home = ({...prop}) => {
 
       <View style={{height: 18}} />
 
-      <NewArrival />
+      <NewArrival productList={productList} />
       <View style={{height: 18}} />
     </ScrollView>
   );

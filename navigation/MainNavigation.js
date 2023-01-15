@@ -8,6 +8,8 @@ import DrawerNavigation from './DrawerNavigation';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {StyleSheet} from 'react-native';
 import SearchPage from '../pages/SearchPage';
+import ProductDetail from '../pages/ProductDetail';
+import Cart from '../pages/Cart';
 
 const Stack = createNativeStackNavigator();
 
@@ -44,6 +46,16 @@ export default MainNavigation = () => {
         <Stack.Screen
           name="SearchPage"
           component={SearchPage}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ProductDetail"
+          component={ProductDetail}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Cart"
+          component={Cart}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

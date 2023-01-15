@@ -1,32 +1,36 @@
 {
-    "products": [
-        {
-            "id": "1",
-            "name_product": "Long Sleeve Shirts",
-            "price": "165",
-            "image": "./assets/images/ao1.png",
-            "favorite": "0"
-        },
-        {
-            "id": "2",
-            "name_product": "Casual Henley Shirts",
-            "price": "175",
-            "image": "./assets/images/ao2.png",
-            "favorite": "1"
-        },
-        {
-            "id": "3",
-            "name_product": "Curved Hem Shirts",
-            "price": "100",
-            "image": "./assets/images/ao3.png",
-            "favorite": "0"
-        },
-        {
-            "id": "4",
-            "name_product": "Casual Nolin",
-            "price": "100",
-            "image": "./assets/images/ao4.png",
-            "favorite": "1"
-        }
-    ]
+  "products": [
+    {
+      "id": "1",
+      "name_product": "Long Sleeve Shirts",
+      "price": "165",
+      "image": "https://lh3.googleusercontent.com/pw/AL9nZEVq5N4IaaAvuoyG8kQY1gbtb_2KiDNtIVYmKIlK1BX6W9kcYErVxPlcHOaAEue595QnVgAzteuEzyIPJzBehhkIslfiJvedvRKBMIEhzjxyxA2wJ7txObF6_NkNWw0SsNY8Vd5YG1zn0u0R1cuhD9-t=w110-h158-no?authuser=0",
+      "desc": "A Henley shirt is a collarless pullover shirt, characterized by a round neckline and a placket about 3 to 5 inches (8 to 13 cm) long and usually having 2–5 buttons. It essentially is a collarless polo shirt.",
+      "favorite": 0
+    },
+    {
+      "id": "2",
+      "name_product": "Casual Henley Shirts",
+      "price": "175",
+      "image": "https://lh3.googleusercontent.com/pw/AL9nZEWlVXpLffRCwpACxmedCMaY_6-kb3n9AJuu7BXKoBJRGmiiQ3LYWTD0dD6kIp5j0tEIWwLu49mUA-yEw1hdc075D4pqu3XQQMvhdfjzAt4-vzl3kPJteOWzhOFf7rhmOcJA4lD5Yhq_8rzgCZsiiQjY=w117-h148-no?authuser=0",
+      "desc": "A Henley shirt is a collarless pullover shirt, characterized by a round neckline and a placket about 3 to 5 inches (8 to 13 cm) long and usually having 2–5 buttons. It essentially is a collarless polo shirt.",
+      "favorite": 1
+    },
+    {
+      "id": "3",
+      "name_product": "Curved Hem Shirts",
+      "price": "100",
+      "image": "https://lh3.googleusercontent.com/pw/AL9nZEXn9HduFLgiBqyCbpaPfaQWCdivz6leF-1x2L_Ge8eqLh9r7ppSFdv-aZG4pATjlC9MEHlmtv-j4ooBBhdZSt7K2A9oSsJqFDjSybyIiUajeEL-Dn9CFPXHCNxc2o6hp4BuVJ--fSi_pkVI8uLn94cJ=w108-h150-no?authuser=0",
+      "desc": "A Henley shirt is a collarless pullover shirt, characterized by a round neckline and a placket about 3 to 5 inches (8 to 13 cm) long and usually having 2–5 buttons. It essentially is a collarless polo shirt.",
+      "favorite": 1
+    },
+    {
+      "id": "4",
+      "name_product": "Casual Nolin",
+      "price": "120",
+      "image": "https://lh3.googleusercontent.com/pw/AL9nZEUBs3763plcwq3F03dCNxbtzarsiw0ZD2Ey4f7G94U5OKI3SQVqRSnV-jWK7MlaL18fqy9fEtWJ87SjymYWvqx3Ihn6EJAfxs2BibFX0B8YWQOqEdTjOQXc_-Hy8fkmwiuwya3M5UM3TiS7JBsOZrzu=w119-h151-no?authuser=0",
+      "desc": "A Henley shirt is a collarless pullover shirt, characterized by a round neckline and a placket about 3 to 5 inches (8 to 13 cm) long and usually having 2–5 buttons. It essentially is a collarless polo shirt.",
+      "favorite": 0
+    }
+  ]
 }

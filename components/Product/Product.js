@@ -1,20 +1,32 @@
-import {StyleSheet, View, Image, Text} from 'react-native';
+import { useNavigation } from '@react-navigation/core';
+import {StyleSheet, View, Image, Text, TouchableOpacity} from 'react-native';
+import { useDispatch } from 'react-redux';
+import productSlice from '../../redux/productSlice';
 import Heart from '../Heart/Heart';
 
-export default Product = ({...prop}) => {
+export default Product = ({product, keyProduct}) => {
+  const dispatch = useDispatch();
+  const navigation = useNavigation();
+
+  const handlePress = () => {
+    dispatch(productSlice.actions.setProductDetail(product));
+
+    navigation.navigate('ProductDetail');
+}
+
   return (
-    <View style={styles.tab} key={prop.keyProduct}>
+    <TouchableOpacity style={styles.tab} key={keyProduct.keyProduct} activeOpacity={0.9} onPress={handlePress}>
       <View style>
-        <Image source={prop.image} />
+        <Image source={{ uri: product.image}} style={{height: 140, width: 100}} resizeMode={'contain'} />
       </View>
       <View style={styles.groupText}>
-        <Text style={styles.price}>{prop.price} $</Text>
-        <Text>{prop.name}</Text>
+        <Text style={styles.price}>{product.price} $</Text>
+        <Text>{product.name_product}</Text>
       </View>
       <View style={styles.heart}>
-        <Heart />
+        <Heart favorite={product.favorite} product={product} />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

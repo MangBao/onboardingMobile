@@ -2,7 +2,7 @@ import {Dimensions, ScrollView, StyleSheet, View, Text} from 'react-native';
 import NewArrivalProduct from '../NewArrivalProduct/NewArrivalProduct';
 import productItem from '../../productItem';
 
-export default NewArrival = () => {
+export default NewArrival = ({productList}) => {
   return (
     <View>
       <View style={styles.newArrival}>
@@ -12,7 +12,7 @@ export default NewArrival = () => {
       <View style={{height: 20}} />
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <View style={styles.groupTabs}>
-          {productItem.map((item, index) => (
+          {productList && productList.map((item, index) => (
             <NewArrivalProduct
               keyProduct={index}
               image={item.image}

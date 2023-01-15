@@ -20,7 +20,7 @@ export default Button = ({...prop}) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: Dimensions.get('window').width - 40,
+    width: Dimensions.get('window').width,
     paddingLeft: 90,
     paddingRight: 90,
   },

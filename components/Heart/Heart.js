@@ -1,66 +1,65 @@
-// import {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {View, TouchableOpacity} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-// import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import { updateFavoriteProducts } from '../../api/services';
+import productSlice from '../../redux/productSlice';
+import { productSelector } from '../../redux/selectors';
 // import {authenSelector, favoriteSelector} from '~/redux/selectors';
 // import {createFavorite, deleteFavorite} from '~/api/services';
 
 import styles from './style';
 // import favoriteSlice from '~/redux/favoriteSlice';
 
-function Heart({product}) {
-  // const dispatch = useDispatch();
-  // const [isLike, setIsLike] = useState(false);
-  // const {favoriteList} = useSelector(favoriteSelector);
+function Heart({favorite, product}) {
+  const dispatch = useDispatch();
+  const [isLike, setIsLike] = useState(favorite);
+  const {productList} = useSelector(productSelector);
+  // console.log(favorite);
   // const {userLogged} = useSelector(authenSelector);
 
-  // useEffect(() => {
-  //   if (favoriteList.length > 0) {
-  //     const arr = favoriteList.map(element => element.product_id);
-  //     if (arr.includes(product?.id || product?.product_id)) {
-  //       setIsLike(true);
-  //     } else {
-  //       setIsLike(false);
-  //     }
-  //   } else {
-  //     setIsLike(false);
-  //   }
-  // }, [favoriteList]);
+  useEffect(() => {
+    if (productList.length > 0) {
+      const arr = productList.map(element => element.id);
+      if (arr.includes(product?.id)) {
+        setIsLike(product?.favorite);
+      }
+    }
 
-  // const handlePress = () => {
-  //   if (!isLike) {
-  //     const payload = {
-  //       user_id: userLogged.id,
-  //       product_id: product.id ? product.id : product.product_id,
-  //       product_name: product.product_name,
-  //       price: product.price,
-  //       product_image: product.product_image,
-  //     };
-  //     createFavorite(payload);
-  //     const arr = [...favoriteList, payload];
-  //     dispatch(favoriteSlice.actions.setFavoriteList(arr));
-  //   } else {
-  //     const payload = {
-  //       user_id: userLogged.id,
-  //       product_id: product.id ? product.id : product.product_id,
-  //     };
-  //     deleteFavorite(payload);
-  //     const arr = favoriteList.filter(element => {
-  //       if (product.id) {
-  //         return element.product_id !== product.id;
-  //       } else {
-  //         return element.product_id !== product.product_id;
-  //       }
-  //     });
-  //     dispatch(favoriteSlice.actions.setFavoriteList(arr));
-  //   }
-  // };
+  }, [productList]);
+
+  const handlePress = () => {
+
+    if (isLike === 0) {
+      setIsLike(1);
+      const payload = {
+        id: product.id,
+        name_product: product.name_product,
+        price: product.price,
+        image: product.product_image,
+        favorite: 1
+      };
+      console.log(isLike);
+      updateFavoriteProducts(product.id, payload);
+    } 
+    else if (isLike === 1) {
+      setIsLike(0);
+      const payload = {
+        id: product.id,
+        name_product: product.name_product,
+        price: product.price,
+        image: product.product_image,
+        favorite: 0
+      };
+      console.log(isLike);
+      updateFavoriteProducts(product.id, payload);
+    }
+  };
 
   return (
-    <TouchableOpacity style={styles.heart}>
+    <TouchableOpacity style={styles.heart} onPress={handlePress}>
       <FontAwesome
-        // name={isLike ? 'heart' : 'heart-o'}
-        name="heart"
+        name={isLike == 1 ? 'heart' : 'heart-o'}
         style={styles.heartIcon}
       />
     </TouchableOpacity>

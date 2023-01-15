@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const defaultUrl = 'http://10.0.2.2:8000';
+const defaultUrl = 'http://127.0.0.1:3000';
 
 export const fetchAllProducts = () => {
   return axios
@@ -11,11 +11,12 @@ export const fetchAllProducts = () => {
     });
 };
 
-export const postFavoriteProducts = id => {
+export const updateFavoriteProducts = (id, data) => {
   return axios
-    .post(`${defaultUrl}/products/${id}`)
+    .patch(`${defaultUrl}/products/${id}`, data)
     .then(response => response.data)
     .catch(err => {
       console.log(err);
     });
 };
+
