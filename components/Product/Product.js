@@ -1,6 +1,6 @@
-import { useNavigation } from '@react-navigation/core';
+import {useNavigation} from '@react-navigation/core';
 import {StyleSheet, View, Image, Text, TouchableOpacity} from 'react-native';
-import { useDispatch } from 'react-redux';
+import {useDispatch} from 'react-redux';
 import productSlice from '../../redux/productSlice';
 import Heart from '../Heart/Heart';
 
@@ -12,12 +12,20 @@ export default Product = ({product, keyProduct}) => {
     dispatch(productSlice.actions.setProductDetail(product));
 
     navigation.navigate('ProductDetail');
-}
+  };
 
   return (
-    <TouchableOpacity style={styles.tab} key={keyProduct.keyProduct} activeOpacity={0.9} onPress={handlePress}>
+    <TouchableOpacity
+      style={styles.tab}
+      key={keyProduct.keyProduct}
+      activeOpacity={0.9}
+      onPress={handlePress}>
       <View style>
-        <Image source={{ uri: product.image}} style={{height: 140, width: 100}} resizeMode={'contain'} />
+        <Image
+          source={{uri: product.image}}
+          style={{height: 140, width: 100}}
+          resizeMode={'contain'}
+        />
       </View>
       <View style={styles.groupText}>
         <Text style={styles.price}>{product.price} $</Text>

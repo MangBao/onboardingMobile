@@ -10,15 +10,14 @@ import TypeClother from '../components/TypeClother/TypeClother';
 import typeProduct from '../typeProduct';
 import {black} from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
 import Product from '../components/Product';
-import { useSelector } from 'react-redux';
-import { productSelector } from '../redux/selectors';
+import {useSelector} from 'react-redux';
+import {productSelector} from '../redux/selectors';
 
 export default SearchPage = ({...prop}) => {
   const title = 'Explore';
   const subtitle = 'best Outfits for you';
 
   const {productList} = useSelector(productSelector);
-
 
   return (
     <ScrollView contentContainerStyle={styles.contentContainer}>
@@ -55,10 +54,7 @@ export default SearchPage = ({...prop}) => {
       <View style={{height: 30}} />
       <View style={[styles.groupTabs]}>
         {productList.map((product, index) => (
-          <Product
-            keyProduct={index}
-            product={product}
-          />
+          <Product keyProduct={index} product={product} />
         ))}
       </View>
     </ScrollView>

@@ -18,6 +18,8 @@ export default ProductDetail = () => {
     navigation.navigate(prevRoute.name);
   };
 
+  console.log(productDetail.favorite);
+
   return (
     <View style={styles.container}>
       <View style>
@@ -28,7 +30,7 @@ export default ProductDetail = () => {
             style={styles.fontIcon}
             onPress={handlePressBackBtn}
           />
-          <Heart />
+          <Heart favorite={productDetail.favorite} product={productDetail} />
         </View>
         <View style={styles.groupImage}>
           <Image
