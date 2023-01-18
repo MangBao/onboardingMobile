@@ -15,7 +15,6 @@ import TabNavigation from './TabNavigation';
 
 export default DrawerNavigation = ({route, navigation}) => {
   const {statePage} = route.params;
-  console.log(statePage);
   const {otherParam} = route.params;
   const imageAvatar = require('../assets/images/avatar.jpeg');
   const imageLogo = require('../assets/images/logomobile.png');

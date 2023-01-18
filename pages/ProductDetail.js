@@ -1,15 +1,20 @@
 import {useNavigation} from '@react-navigation/core';
 import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import Button from '../components/Button';
+import ButtonAddCart from '../components/ButtonAddCart/ButtonAddCart';
 import Heart from '../components/Heart/Heart';
-import {productSelector} from '../redux/selectors';
+import cartSlice from '../redux/cartSlice';
+import {cartSelector, productSelector} from '../redux/selectors';
 
 export default ProductDetail = () => {
   const navigation = useNavigation();
 
   const {productDetail} = useSelector(productSelector);
+  const {cartProduct} = useSelector(cartSelector);
+
+  const dispatch = useDispatch();
 
   const handlePressBackBtn = () => {
     const routes = navigation.getState()?.routes;
@@ -18,7 +23,33 @@ export default ProductDetail = () => {
     navigation.navigate(prevRoute.name);
   };
 
-  console.log(productDetail.favorite);
+  const handleAddToCart = () => {
+    if (cartProduct.length === 0) {
+      dispatch(
+        cartSlice.actions.setCartProduct([{...productDetail, quality: 1}]),
+      );
+    } else {
+      for (let i = 0; i < cartProduct.length; i++) {
+        if (cartProduct[i].id === productDetail.id) {
+          dispatch(
+            cartSlice.actions.setCartProduct([
+              {
+                ...productDetail,
+                quality: cartProduct[i].quality + 1,
+              },
+            ]),
+          );
+        } else {
+          const arr = [...cartProduct];
+          arr.push({
+            ...productDetail,
+            quality: +1,
+          });
+          dispatch(cartSlice.actions.setCartProduct(arr));
+        }
+      }
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -93,7 +124,10 @@ export default ProductDetail = () => {
           </View>
         </View>
         <View style={styles.addButton}>
-          <Button textTitle={'Add to Cart'} />
+          <ButtonAddCart
+            textTitle={'Add to Cart'}
+            handlePress={handleAddToCart}
+          />
         </View>
       </View>
     </View>

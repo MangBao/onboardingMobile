@@ -1,4 +1,5 @@
 import {useNavigation} from '@react-navigation/core';
+import {useEffect} from 'react';
 import {
   Dimensions,
   Image,
@@ -8,13 +9,18 @@ import {
   View,
 } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import Button from '../components/Button';
-import Heart from '../components/Heart/Heart';
-import {productSelector} from '../redux/selectors';
+import ItemCart from '../components/ItemCart';
+import {cartSelector} from '../redux/selectors';
 
 export default Cart = () => {
   const navigation = useNavigation();
+  const {cartProduct} = useSelector(cartSelector);
+
+  // useEffect(() => {
+
+  // })
 
   const handlePressBackBtn = () => {
     const routes = navigation.getState()?.routes;
@@ -22,6 +28,18 @@ export default Cart = () => {
 
     navigation.navigate(prevRoute.name);
   };
+
+  const handleTotal = () => {
+    let total = 0;
+
+    for (let i = 0; i < cartProduct.length; i++) {
+      total += cartProduct[i].quality * cartProduct[i].price;
+    }
+
+    return total;
+  };
+
+  console.log(handleTotal());
 
   return (
     <View style={styles.container}>
@@ -37,48 +55,21 @@ export default Cart = () => {
         </View>
       </View>
       <ScrollView style={styles.listProduct}>
-        <View style={styles.product}>
-          <View style={styles.wrapImage}>
-            <Image
-              source={require('../assets/images/ao1.png')}
-              style={{width: 80, height: 80}}
-            />
-          </View>
-          <View style={styles.price}>
-            <Text style={{fontSize: 17, marginBottom: 14}}>Henley Shirts</Text>
-            <Text style={{fontSize: 17}}>$250</Text>
-          </View>
-          <View style={styles.inputAdd}>
-            <Text
-              style={{
-                fontSize: 17,
-                marginRight: 10,
-                backgroundColor: '#feebe5',
-                width: 22,
-                height: 22,
-                borderRadius: 8,
-                textAlign: 'center',
-              }}>
-              +
-            </Text>
-            <Text style={{fontSize: 17}}>1</Text>
-            <Text
-              style={{
-                fontSize: 17,
-                marginLeft: 10,
-                backgroundColor: '#feebe5',
-                width: 22,
-                height: 22,
-                borderRadius: 8,
-                textAlign: 'center',
-              }}>
-              -
-            </Text>
-          </View>
-        </View>
+        {cartProduct.length === 0 ? (
+          <Text style={{fontSize: 16, fontWeight: '500'}}>Cart empty !</Text>
+        ) : (
+          cartProduct.map((item, index) => (
+            <ItemCart product={item} indexKey={index} />
+          ))
+        )}
       </ScrollView>
-      <View>
-        <Text></Text>
+      <View style={styles.total}>
+        <Text style={{fontSize: 16, fontWeight: '500', color: 'black'}}>
+          Subtotal:{' '}
+        </Text>
+        <Text style={{fontSize: 16, fontWeight: '500', color: 'black'}}>
+          ${cartProduct.length === 0 ? 0 : handleTotal()}
+        </Text>
       </View>
       <View style={styles.addButton}>
         <Button textTitle={'Check out'} />
@@ -129,29 +120,12 @@ const styles = StyleSheet.create({
   addButton: {
     marginTop: 10,
   },
-  wrapImage: {
-    width: 90,
-    height: 90,
-    backgroundColor: '#bfe8ea',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
-    marginLeft: 10,
-  },
-  product: {
-    width: Dimensions.get('window').width - 36,
-    backgroundColor: '#ffffff',
-    paddingBottom: 8,
-    paddingTop: 8,
+  total: {
+    display: 'flex',
     flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    borderRadius: 10,
-  },
-  price: {
-    marginLeft: 16,
-  },
-  inputAdd: {
-    flexDirection: 'row',
-    marginLeft: 60,
+    paddingHorizontal: 20,
+    paddingBottom: 20,
   },
 });

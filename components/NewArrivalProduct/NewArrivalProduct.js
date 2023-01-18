@@ -2,13 +2,15 @@ import {View, Image, StyleSheet, Text} from 'react-native';
 
 export default NewArrivalProduct = ({...prop}) => {
   // const defaultPath = '../../assets/images';
-  console.log(prop.image);
-
 
   return (
     <View style={styles.tab} key={prop.keyProduct}>
       <View>
-        <Image source={{uri: prop.image}} style={{height: 140, width: 100}} resizeMode={'contain'} />
+        <Image
+          source={{uri: prop.image}}
+          style={{height: 140, width: 100}}
+          resizeMode={'contain'}
+        />
       </View>
       <View style={styles.groupText}>
         <Text style={styles.price}>{prop.price} $</Text>
@@ -37,5 +39,4 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
   },
-
 });
